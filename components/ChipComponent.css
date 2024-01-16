@@ -1,0 +1,86 @@
+.chip-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f8f8f8;
+}
+
+.sun-chip-container {
+  width: 20rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  background-color: #e2e8f0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.chip-image{
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  margin-right: 4px;
+}
+.option-image{
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  margin-right: 4px;
+}
+
+.remove-icon {
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+/* .item-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+
+} */
+
+.item-list li {
+  cursor: pointer;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  background-color: white;
+}
+
+.item-list li:hover {
+  background-color: #e2e8f0;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.input-container input {
+  width: 300px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  margin-bottom: 8px;
+  background-color: white;
+}
