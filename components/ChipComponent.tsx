@@ -31,7 +31,6 @@ const ChipComponent: React.FC = () => {
       { id: 8, label: "Jackson", imageUrl: "https://res.cloudinary.com/dmlts9lbk/image/upload/v1705389540/identicon_hqqtq9.png" },
       { id: 9, label: "Ava White", imageUrl: "https://res.cloudinary.com/dmlts9lbk/image/upload/v1705389540/identicon_hqqtq9.png" },
       { id: 10, label: "Nguyen", imageUrl: "https://res.cloudinary.com/dmlts9lbk/image/upload/v1705389540/59449606_wxa987.png" },
-
       // Add more items with imageUrl
     ].filter(
       (item) => !chips.some((chip) => chip.label === item.label.toLowerCase())
@@ -126,6 +125,14 @@ const ChipComponent: React.FC = () => {
     }
   };
 
+  const handleInputBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    // Check if the related target (element losing focus) is within the suggestion list
+    if (!optionsRef.current?.contains(event.relatedTarget as Node)) {
+      // Hide the suggestion list if the related target is not within it
+      setShow(false);
+    }
+  };
+
   return (
     <div className="chip-container">
       <div className="sun-chip-container">
@@ -152,7 +159,7 @@ const ChipComponent: React.FC = () => {
             onKeyDown={handleInputKeyDown}
             placeholder="Type here..."
             onFocus={() => setShow(true)}
-            // onBlur={() => setShow(false)}
+            onBlur={handleInputBlur}
           />
         </div>
         {show && (
@@ -165,7 +172,14 @@ const ChipComponent: React.FC = () => {
             }}
           >
             {filteredItems.map((item) => (
-              <li className="flex items-center gap-x-2 gap-y-2 hover:bg-black/10 cursor-pointer px-2 py-1" key={item.id} onClick={() => handleItemClick(item)}>
+              <li
+                className="flex items-center gap-x-2 gap-y-2 hover:bg-black/10 cursor-pointer px-2 py-1"
+                key={item.id}
+                onMouseDown={(e) => {
+                  e.preventDefault();
+                  handleItemClick(item);
+                }}
+              >
                 <img src={item.imageUrl} alt={item.label} className="option-image" />
                 {item.label}
               </li>
